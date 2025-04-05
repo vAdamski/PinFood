@@ -1,4 +1,4 @@
-namespace PinFood.Application.Actions.UsersActions.Queries.LoginUser;
+namespace PinFood.Application.Actions.UsersActions.Queries.Shared;
 
 public class LoginUserResponse
 {

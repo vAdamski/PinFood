@@ -1,3 +1,4 @@
+using PinFood.Application.Actions.UsersActions.Queries.Shared;
 using PinFood.Application.Common.Abstraction.Messaging;
 using PinFood.Application.Common.Interfaces.Application.Providers;
 using PinFood.Application.Common.Interfaces.Application.Services;

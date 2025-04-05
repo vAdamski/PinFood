@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PinFood.Application.Actions.UsersActions.Commands.RegisterUser;
 using PinFood.Application.Actions.UsersActions.Queries.LoginUser;
+using PinFood.Application.Actions.UsersActions.Queries.LoginUserWithRefreshToken;
 
 namespace PinFood.Api.Controllers;
 
@@ -33,10 +34,12 @@ public class UsersController(ISender sender) : BaseController(sender)
 		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}
 	
-	[HttpPost("refresh-token")]
-	public async Task<IActionResult> RefreshToken()
+	[HttpGet("refresh-token")]
+	public async Task<IActionResult> RefreshToken([FromBody] LoginUserWithRefreshTokenQuery query)
 	{
-		throw new NotImplementedException();
+		var result = await Sender.Send(query);
+
+		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}
 	
 	[HttpPost("logout")]
