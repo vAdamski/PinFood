@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PinFood.Application.Common.Interfaces.Persistence;
+using PinFood.Application.Common.Interfaces.Persistence.Repositories;
+using PinFood.Persistence.Repositories;
 
 namespace PinFood.Persistence;
 
@@ -17,6 +19,8 @@ public static class DependencyInjection
 
 		services.AddScoped<IAppDbContext, AppDbContext>();
 		services.AddScoped<IUnitOfWork, UnitOfWork>();
+		services.AddScoped<IUserRepository, UserRepository>();
+		services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
 		return services;
 	}

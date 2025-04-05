@@ -1,30 +1,36 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PinFood.Application.Actions.UsersActions.Commands.RegisterUser;
+using PinFood.Application.Actions.UsersActions.Queries.LoginUser;
 
 namespace PinFood.Api.Controllers;
 
 [Route("api/users")]
 public class UsersController(ISender sender) : BaseController(sender)
 {
-	[HttpGet("{userId:guid}")]
-	public async Task<IActionResult> GetUser(Guid userId)
+	[HttpGet("{userId}")]
+	public async Task<IActionResult> GetUser([FromRoute] Guid userId)
 	{
-		throw new NotImplementedException();
+		return Ok(userId);
 	}
 	
 	[AllowAnonymous]
 	[HttpPost("register")]
-	public async Task<IActionResult> Register()
+	public async Task<IActionResult> Register([FromBody] RegisterUserCommand command)
 	{
-		throw new NotImplementedException();
+		var result = await Sender.Send(command);
+
+		return result.IsSuccess ? Ok() : HandleFailure(result);
 	}
 	
 	[AllowAnonymous]
-	[HttpPost("login")]
-	public async Task<IActionResult> Login()
+	[HttpGet("login")]
+	public async Task<IActionResult> Login([FromBody] LoginUserQuery query)
 	{
-		throw new NotImplementedException();
+		var result = await Sender.Send(query);
+
+		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}
 	
 	[HttpPost("refresh-token")]

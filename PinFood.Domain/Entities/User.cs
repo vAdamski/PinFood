@@ -7,6 +7,11 @@ public class User
 	public string LastName { get; set; }
 	public string Email { get; set; }
 	public string PasswordHash { get; set; }
+
+	private User()
+	{
+		
+	}
 	
 	public static User Create(string firstName, string lastName, string email, string passwordHash)
 	{

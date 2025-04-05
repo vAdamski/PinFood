@@ -48,7 +48,7 @@ public abstract class DesignTimeDbContextFactoryBase<TContext> : IDesignTimeDbCo
 				nameof(connectionString));
 		}
 
-		Console.WriteLine($"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");
+		Console.WriteLine($"DesignTimeDbContextFactoryBase.CreateJwtToken(string): Connection string: '{connectionString}'.");
 
 		var optionBuilder = new DbContextOptionsBuilder<TContext>();
 
