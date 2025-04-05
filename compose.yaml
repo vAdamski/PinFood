@@ -1,0 +1,11 @@
+﻿version: "3.8"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: pinFoodDb
+    environment:
+      - ACCEPT_EULA=1
+      - MSSQL_SA_PASSWORD=PinFood$1234
+    ports:
+      - 1434:1433

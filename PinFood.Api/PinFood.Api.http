@@ -1,0 +1,6 @@
+@PinFood.Api_HostAddress = http://localhost:5222
+
+GET {{PinFood.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
