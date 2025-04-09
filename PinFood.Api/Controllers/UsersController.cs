@@ -26,7 +26,7 @@ public class UsersController(ISender sender) : BaseController(sender)
 	}
 	
 	[AllowAnonymous]
-	[HttpGet("login")]
+	[HttpPost("login")]
 	public async Task<IActionResult> Login([FromBody] LoginUserQuery query)
 	{
 		var result = await Sender.Send(query);
@@ -34,7 +34,7 @@ public class UsersController(ISender sender) : BaseController(sender)
 		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}
 	
-	[HttpGet("refresh-token")]
+	[HttpPost("refresh-token")]
 	public async Task<IActionResult> RefreshToken([FromBody] LoginUserWithRefreshTokenQuery query)
 	{
 		var result = await Sender.Send(query);

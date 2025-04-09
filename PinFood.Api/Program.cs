@@ -14,8 +14,9 @@ builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddInfrastructure();
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+
 builder.ConfigureAppSettings();
+builder.Services.AddSwaggerConfiguration();
 builder.ConfigureSerilog(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
@@ -39,6 +40,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 	app.MapOpenApi();
+	app.UseSwaggerConfiguration();
 }
 
 app.UseHttpsRedirection();
