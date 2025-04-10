@@ -17,4 +17,9 @@ public class UserRepository(IUnitOfWork unitOfWork, IAppDbContext ctx) : IUserRe
 		await ctx.Users.AddAsync(user, cancellationToken);
 		await unitOfWork.SaveChangesAsync(cancellationToken);
 	}
+
+	public Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+	{
+		return ctx.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+	}
 }
