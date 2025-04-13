@@ -23,9 +23,6 @@ public static class DomainErrors
 		
 		public static Error ExpiredRefreshToken =>
 			new Error("ExpiredRefreshToken", $"Expired refresh token.");
-		
-		public static Error InvalidUser =>
-			new Error("InvalidUser", $"Invalid user.");
 	}
 	
 	public static class Dish
@@ -39,8 +36,8 @@ public static class DomainErrors
 		public static Error DescriptionTooLong =>
 			new Error("InvalidDescription", $"Dish description cannot be empty.");
 		
-		public static Error InvalidRecipeStep =>
-			new Error("InvalidRecipeStep", $"Recipe step cannot be empty.");
+		public static Error NotFound => 
+			new Error("DishNotFound", $"Dish with this id not found.");
 	}
 	
 	public static class RecipeStep
@@ -65,13 +62,6 @@ public static class DomainErrors
 	{
 		public static Error InvalidDish =>
 			new Error("InvalidDish", $"Dish cannot be empty.");
-		
-		public static Error InvalidFileData =>
-			new Error("InvalidFileData", $"File data cannot be empty.");
-		
-		public static Error InvalidFileName =>
-			new Error("InvalidFileName", $"File name cannot be empty.");
-		
 		public static Error InvalidFilePath =>
 			new Error("InvalidFilePath", $"File path cannot be empty.");
 	}
