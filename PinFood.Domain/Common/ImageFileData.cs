@@ -8,7 +8,7 @@ public class ImageFileData(IFormFile formFile) : IFileData
 
 	public long Length => formFile.Length;
 
-	public string Name => Guid.NewGuid() + Path.GetExtension(formFile.FileName);
+	public string Name { get; } = Guid.NewGuid() + Path.GetExtension(formFile.FileName);
 
 	public async Task CopyToAsync(Stream target, CancellationToken cancellationToken = default)
 	{
