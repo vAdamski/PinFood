@@ -37,6 +37,10 @@ public class AppDbContext : DbContext, IAppDbContext
 	public DbSet<User> Users { get; set; }
 	public DbSet<RefreshToken> RefreshTokens { get; set; }
 	
+	public DbSet<Dish> Dishes { get; set; }
+	public DbSet<DishImage> DishImages { get; set; }
+	public DbSet<RecipeStep> RecipeSteps { get; set; }
+	
 	
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
