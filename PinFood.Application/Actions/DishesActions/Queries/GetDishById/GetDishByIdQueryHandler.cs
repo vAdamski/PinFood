@@ -1,13 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
 using PinFood.Application.Common.Abstraction.Messaging;
+using PinFood.Application.Common.Interfaces.Application.Providers;
 using PinFood.Application.Common.Interfaces.Persistence;
 using PinFood.Domain.Common;
 using PinFood.Domain.Errors;
 
 namespace PinFood.Application.Actions.DishesActions.Queries.GetDishById;
 
-public class GetDishByIdQueryHandler(IAppDbContext ctx) : IQueryHandler<GetDishByIdQuery, DishViewModel>
+public class GetDishByIdQueryHandler(IAppDbContext ctx, IFileUrlProvider fileUrlProvider)
+	: IQueryHandler<GetDishByIdQuery, DishViewModel>
 {
 	public async Task<Result<DishViewModel>> Handle(GetDishByIdQuery request, CancellationToken cancellationToken)
 	{
@@ -25,7 +27,7 @@ public class GetDishByIdQueryHandler(IAppDbContext ctx) : IQueryHandler<GetDishB
 		{
 			Name = dish.DishName,
 			Description = dish.Description,
-			Images = dish.DishImages.Select(i => i.FilePath).ToList(),
+			Images = dish.DishImages.Select(i => fileUrlProvider.GenerateFileUrl(i.FilePath)).ToList(),
 			RecipeSteps = dish.RecipeSteps.Select(rs => new RecipeStepDto
 			{
 				Order = rs.Order,

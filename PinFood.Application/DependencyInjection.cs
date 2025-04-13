@@ -21,6 +21,7 @@ public static class DependencyInjection
 
 		services.AddTransient<IPasswordHasher, PasswordHasher>();
 		services.AddTransient<ITokenProvider, TokenProvider>();
+		services.AddScoped<IFileUrlProvider, FileUrlProvider>();
         
 		return services;
 	}
