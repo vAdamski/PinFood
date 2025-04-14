@@ -26,5 +26,5 @@ jobs:
 
       - name: Build and Push Docker Image Api
         run: |
-          docker build -f ./PinFood.Api/Dockerfile -t vazaras/pinFood-api:latest .
-          docker push vazaras/pinFood-api:latest
+          docker build -f ./PinFood.Api/Dockerfile -t vazaras/pinfood-api:latest .
+          docker push vazaras/pindood-api:latest
