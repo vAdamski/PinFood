@@ -3,7 +3,7 @@ import axios from "axios";
 import * as SecureStore from 'expo-secure-store';
 
 const TOKEN_KEY = 'jwt_token';
-export const API_URL = 'http://192.168.18.46:5000';
+export const API_URL = 'http://192.168.18.46:15000';
 const AuthContext = createContext({});
 
 export const useAuth = () => {
@@ -64,7 +64,10 @@ export const AuthProvider = ({children}) => {
                     'Content-Type': 'application/json'
                 }
             });
-            const {token} = response.data.token;
+
+            console.log(response.data);
+
+            const token = response.data.token;
 
             setAuthState({
                 token: token,

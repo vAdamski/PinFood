@@ -1,11 +1,12 @@
 import {Button} from 'react-native';
 import {AuthProvider, useAuth} from "./app/context/AuthContext";
 import {NavigationContainer} from "@react-navigation/native";
-import {createStackNavigator} from "@react-navigation/native/src/__stubs__/createStackNavigator";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
+import {SafeAreaView} from "react-native-safe-area-context";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
