@@ -3,7 +3,7 @@ import axios from "axios";
 import * as SecureStore from 'expo-secure-store';
 
 const TOKEN_KEY = 'jwt_token';
-export const API_URL = 'https://localhost:5001';
+export const API_URL = 'http://192.168.18.46:5000';
 const AuthContext = createContext({});
 
 export const useAuth = () => {
@@ -51,9 +51,18 @@ export const AuthProvider = ({children}) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post(`${API_URL}/api/users/login`, {
+
+            const dto = {
                 email: email,
                 password: password
+            }
+
+            console.log(dto);
+
+            const response = await axios.post(`${API_URL}/api/users/login`, dto, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             const {token} = response.data.token;
 
@@ -66,7 +75,13 @@ export const AuthProvider = ({children}) => {
 
             await SecureStore.setItemAsync(TOKEN_KEY, token);
         } catch (e) {
-            console.log(e);
+            if (e.response) {
+                console.log('Response data:', e.response.data);
+                console.log('Response status:', e.response.status);
+                console.log('Response headers:', e.response.headers);
+            } else {
+                console.log('Error:', e.message);
+            }
         }
     }
 
