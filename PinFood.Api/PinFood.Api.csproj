@@ -20,16 +20,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\PinFood.Application\PinFood.Application.csproj" />
       <ProjectReference Include="..\PinFood.Domain\PinFood.Domain.csproj" />
       <ProjectReference Include="..\PinFood.Infrastructure\PinFood.Infrastructure.csproj" />
       <ProjectReference Include="..\PinFood.Persistence\PinFood.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
