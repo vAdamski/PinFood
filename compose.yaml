@@ -12,6 +12,7 @@ services:
   
   pinFoodApi:
     container_name: pinFoodApi
+    image: vazaras/pinfoodapi:latest
     build:
       context: .
       dockerfile: ./PinFood.Api/Dockerfile
