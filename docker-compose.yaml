@@ -11,6 +11,7 @@ services:
       - 1434:1433
   
   pinFoodApi:
+    pull_policy: always
     container_name: pinFoodApi
     image: vazaras/pinfoodapi:latest
     build:
@@ -24,5 +25,5 @@ services:
       - FileStorage__StaticFileRequestPath=/files
       - FileStorage__BasePath=/app/files
     volumes:
-      - /Users/adamludwiczak/Documents/PinFood:/app/files
+      - /var/pinfood:/app/files
       
