@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View} from "react-native";
 import axios from "axios";
 import {Text} from "react-native";
+import {useAuth} from "../app/context/AuthContext";
 
 function Home() {
     const [user, setUser] = useState({
@@ -14,7 +15,8 @@ function Home() {
     useEffect(() => {
         const testCall = async () => {
             try {
-                const response = await axios.get('http://192.168.18.46:15000/api/users/d79b6c0c-ca05-44d3-97ed-d953d8945216');
+
+                const response = await axios.get(`http://localhost:15000/api/users`);
                 console.log(response.data);
                 setUser(response.data);
             } catch (error) {

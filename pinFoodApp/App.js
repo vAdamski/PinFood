@@ -28,7 +28,7 @@ export const Layout = () => {
                         headerRight: () => <Button onPress={onLogout} title="Wyloguj"/>
                     }}></Stack.Screen>
                 ) : (
-                    <Stack.Screen name="Login" component={Login}></Stack.Screen>
+                    <Stack.Screen name="Tymczasowe" component={Login}></Stack.Screen>
                 )}
             </Stack.Navigator>
         </NavigationContainer>
