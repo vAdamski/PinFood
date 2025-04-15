@@ -1,6 +1,4 @@
-﻿version: "3.8"
-
-services:
+﻿services:
   mysql:
     image: mysql:latest
     container_name: pinFoodDbMySql
@@ -11,7 +9,8 @@ services:
       - MYSQL_PASSWORD=Pass123$
     ports:
       - 3306:3306
-  
+    volumes:
+      - mysql_data:/var/lib/mysql
   
   pinfoodapi:
     container_name: pinFoodApi
@@ -26,4 +25,7 @@ services:
       - FileStorage__StaticFileRequestPath=/files
       - FileStorage__BasePath=/app/files
     volumes:
-      - /var/pinfood:/app/files
+      - /Users/adamludwiczak/Documents/PinFood:/app/files
+        
+volumes:
+  mysql_data:
