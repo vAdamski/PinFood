@@ -25,7 +25,8 @@
       - FileStorage__StaticFileRequestPath=/files
       - FileStorage__BasePath=/app/files
     volumes:
-      - /Users/adamludwiczak/Documents/PinFood:/app/files
+      - app_files:/app/files
         
 volumes:
   mysql_data:
+  app_files:
