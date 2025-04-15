@@ -1,19 +1,20 @@
 ﻿version: "3.8"
 
 services:
-  sqlserver:
-    image: mcr.microsoft.com/azure-sql-edge:latest
-    container_name: pinFoodDb
+  mysql:
+    image: mysql:latest
+    container_name: pinFoodDbMySql
     environment:
-      - ACCEPT_EULA=1
-      - MSSQL_SA_PASSWORD=PinFood$1234
+      - MYSQL_ROOT_PASSWORD=Pass123$
+      - MYSQL_DATABASE=PinFoodDatabase
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=Pass123$
     ports:
-      - 1434:1433
+      - 3306:3306
   
-  pinFoodApi:
-    pull_policy: always
+  
+  pinfoodapi:
     container_name: pinFoodApi
-    image: vazaras/pinfoodapi:latest
     build:
       context: .
       dockerfile: ./PinFood.Api/Dockerfile
@@ -21,9 +22,8 @@ services:
       - 15000:8080
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=host.docker.internal,1434;Initial Catalog=PinFoodDatabase;Persist Security Info=False;User ID=sa;Password=PinFood$1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;
+      - ConnectionStrings__DefaultConnection=Server=host.docker.internal;Port=3306;Database=PinFoodDatabase;Uid=admin;Pwd=Pass123$;
       - FileStorage__StaticFileRequestPath=/files
       - FileStorage__BasePath=/app/files
     volumes:
       - /var/pinfood:/app/files
-      

@@ -52,7 +52,7 @@ public abstract class DesignTimeDbContextFactoryBase<TContext> : IDesignTimeDbCo
 
 		var optionBuilder = new DbContextOptionsBuilder<TContext>();
 
-		optionBuilder.UseSqlServer(connectionString);
+		optionBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 
 		return CreateNewInstance(optionBuilder.Options);
 	}
