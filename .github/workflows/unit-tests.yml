@@ -8,29 +8,29 @@ on:
     branches:
       - main
   
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Setup .NET
-          uses: actions/setup-dotnet@v4
-          with:
-            dotnet-version: '9.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
 
-        - name: Restore dependencies
-          run: dotnet restore
+      - name: Restore dependencies
+        run: dotnet restore
 
-        - name: Build
-          run: dotnet build --configuration Release
+      - name: Build
+        run: dotnet build --configuration Release
 
-        - name: Run tests
-          run: dotnet test --configuration Release --no-build --verbosity normal --results-directory "TestResults-${{ matrix.dotnet-version }}"
-        
-        - name: Upload dotnet test results
-          uses: actions/upload-artifact@v4
-          with:
-            name: dotnet-results-${{ matrix.dotnet-version }}
-            path: TestResults-${{ matrix.dotnet-version }}
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-results-${{ matrix.dotnet-version }}
+          path: TestResults-${{ matrix.dotnet-version }}
