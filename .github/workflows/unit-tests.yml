@@ -25,13 +25,19 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory ./TestResults
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: ./TestResults/TestResults.trx
+
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: success() || failure()
         with:
-          artifact: 'TestResults'
+          artifact: TestResults
           name: 'Test Results'
-          path: 'TestResults.trx'
+          path: TestResults.trx
           reporter: dotnet-trx
       
       
