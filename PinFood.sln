@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinFood.Infrastructure", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinFood.Persistence", "PinFood.Persistence\PinFood.Persistence.csproj", "{5DD5F8B0-EE7C-4ABC-80C9-FB3B82A77BBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinFood.Tests", "PinFood.Tests\PinFood.Tests.csproj", "{71D1042D-536A-4FB4-8FA9-942DE9A65228}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +45,9 @@ Global
 		{5DD5F8B0-EE7C-4ABC-80C9-FB3B82A77BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DD5F8B0-EE7C-4ABC-80C9-FB3B82A77BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DD5F8B0-EE7C-4ABC-80C9-FB3B82A77BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D1042D-536A-4FB4-8FA9-942DE9A65228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D1042D-536A-4FB4-8FA9-942DE9A65228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D1042D-536A-4FB4-8FA9-942DE9A65228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D1042D-536A-4FB4-8FA9-942DE9A65228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
