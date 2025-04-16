@@ -24,12 +24,14 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
+        run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx" --results-directory ./TestResults
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
+        if: success() || failure()
         with:
-          name: 'Unit Tests'
-          path: '**/TestResults.trx'
-          reporter: dotnet-trx
-          fail-on-error: true
+          artifact: 'TestResults'
+          name: 'Test Results'
+          path: 'TestResults.trx'
+          reporter: 'trx'
+      
       
