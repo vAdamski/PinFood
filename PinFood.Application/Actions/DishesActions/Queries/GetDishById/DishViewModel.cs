@@ -1,4 +1,5 @@
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
+using PinFood.Domain.Entities;
 
 namespace PinFood.Application.Actions.DishesActions.Queries.GetDishById;
 
