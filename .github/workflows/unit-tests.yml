@@ -32,6 +32,6 @@ jobs:
           artifact: 'TestResults'
           name: 'Test Results'
           path: 'TestResults.trx'
-          reporter: trx
+          reporter: dotnet-trx
       
       
