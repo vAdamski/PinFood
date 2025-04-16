@@ -24,10 +24,6 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal --results-directory ./TestResults
-        with:
-          name: pinfood-unit-tests-results-${NOW}
-          path: TestResults
-          if: ${{ always() }}
+        run: dotnet test --no-build --verbosity normal
           
       
