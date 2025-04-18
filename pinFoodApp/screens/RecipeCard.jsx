@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 5,
         width: '100%',
-        height: '90%',
+        height: '95%',
     },
     imageBackground: {
         flex: 1,
