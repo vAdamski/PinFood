@@ -1,9 +1,9 @@
 import {createContext, useContext, useEffect, useState} from 'react'
 import axios from "axios";
 import * as SecureStore from 'expo-secure-store';
+import { API_URL } from '../common/ApiSettings';
 
 const TOKEN_KEY = 'jwt_token';
-export const API_URL = 'http://localhost:15000';
 const AuthContext = createContext({});
 
 export const useAuth = () => {

@@ -7,8 +7,8 @@ function Login() {
     const [isRegister, setIsRegister] = React.useState(false);
     const [firstName, setFirstName] = React.useState('');
     const [lastName, setLastName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [email, setEmail] = React.useState('adam.ludwiczak98@gmail.com');
+    const [password, setPassword] = React.useState('Pass123$');
 
     const {onLogin, onRegister} = useAuth();
 
