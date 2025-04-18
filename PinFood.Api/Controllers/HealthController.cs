@@ -13,6 +13,7 @@ public class HealthController(ISender sender) : BaseController(sender)
 	public async Task<IActionResult> Get()
 	{
 		var result = await sender.Send(new CheckHealthQuery());
-		return Ok(result);
+
+		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}
 }
