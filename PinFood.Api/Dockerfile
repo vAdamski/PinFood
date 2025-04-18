@@ -13,7 +13,8 @@ RUN dotnet publish "PinFood.Api.csproj" -c Release -o /app/publish /p:UseAppHost
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
+EXPOSE 443
+ENV ASPNETCORE_URLS=http://+:80
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "PinFood.Api.dll"]
