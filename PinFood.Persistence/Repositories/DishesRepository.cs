@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
+using PinFood.Application.Actions.DishesActions.Shared;
 using PinFood.Application.Common.Interfaces.Infrastructure.Services;
 using PinFood.Application.Common.Interfaces.Persistence;
 using PinFood.Application.Common.Interfaces.Persistence.Repositories;
@@ -22,8 +23,7 @@ public class DishesRepository(IAppDbContext ctx) : IDishesRepository
 			                          x.Status == AuditableEntityStatus.Active,
 				cancellationToken);
 	}
-
-
+	
 	public async Task AddAsync(Dish dish, CancellationToken cancellationToken)
 	{
 		await ctx.Dishes.AddAsync(dish, cancellationToken);
@@ -66,5 +66,14 @@ public class DishesRepository(IAppDbContext ctx) : IDishesRepository
 		ctx.Dishes.Remove(dish);
 
 		return Result.Success();
+	}
+
+	public async Task<List<Dish>> GetAllAsync(CancellationToken cancellationToken)
+	{
+		return await ctx.Dishes
+			.Include(x => x.DishImages)
+			.Include(x => x.RecipeSteps)
+			.Where(x => x.Status == AuditableEntityStatus.Active)
+			.ToListAsync(cancellationToken);
 	}
 }

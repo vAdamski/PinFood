@@ -1,4 +1,4 @@
-namespace PinFood.Application.Actions.DishesActions.Commands.CreateDish;
+namespace PinFood.Application.Actions.DishesActions.Shared;
 
 public class RecipeStepDto
 {

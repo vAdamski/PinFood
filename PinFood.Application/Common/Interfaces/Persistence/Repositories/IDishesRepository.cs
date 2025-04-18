@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
+using PinFood.Application.Actions.DishesActions.Shared;
 using PinFood.Application.Common.Interfaces.Infrastructure.Services;
 using PinFood.Domain.Common;
 using PinFood.Domain.Entities;
@@ -13,4 +14,5 @@ public interface IDishesRepository
 	Task<Result> AddDishImagesAsync(Dish dish, IEnumerable<IFormFile> images, IDishImageService dishImageService);
 	Task<Dish?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 	Task<Result> DeleteByIdAsync(Guid id, CancellationToken cancellationToken);
+	Task<List<Dish>> GetAllAsync(CancellationToken cancellationToken);
 }

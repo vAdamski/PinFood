@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
 using PinFood.Application.Actions.DishesActions.Commands.DeleteDish;
 using PinFood.Application.Actions.DishesActions.Queries.GetDishById;
+using PinFood.Application.Actions.DishesActions.Queries.GetDishes;
 
 namespace PinFood.Api.Controllers;
 
@@ -13,6 +14,14 @@ public class DishesController(ISender sender) : BaseController(sender)
 	public async Task<IActionResult> Get(Guid id)
 	{
 		var result = await sender.Send(new GetDishByIdQuery { Id = id });
+		
+		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
+	}
+
+	[HttpGet]
+	public async Task<IActionResult> Get()
+	{
+		var result = await sender.Send(new GetDishesQuery());
 		
 		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}

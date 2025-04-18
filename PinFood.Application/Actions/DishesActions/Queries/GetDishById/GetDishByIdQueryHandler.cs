@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
+using PinFood.Application.Actions.DishesActions.Shared;
 using PinFood.Application.Common.Abstraction.Messaging;
 using PinFood.Application.Common.Interfaces.Api.Services;
 using PinFood.Application.Common.Interfaces.Application.Providers;
