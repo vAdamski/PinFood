@@ -1,7 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PinFood.Application.Actions.DishesActions.Commands.AddToFavorite;
 using PinFood.Application.Actions.DishesActions.Commands.CreateDish;
 using PinFood.Application.Actions.DishesActions.Commands.DeleteDish;
+using PinFood.Application.Actions.DishesActions.Commands.RemoveFromFavorites;
 using PinFood.Application.Actions.DishesActions.Queries.GetDishById;
 using PinFood.Application.Actions.DishesActions.Queries.GetDishes;
 
@@ -34,11 +36,27 @@ public class DishesController(ISender sender) : BaseController(sender)
 		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
 	}
 	
+	[HttpPost("{dishId}/like")]
+	public async Task<IActionResult> AddToFavorites(Guid dishId)
+	{
+		var result = await sender.Send(new AddToFavoritesCommand { DishId = dishId });
+		
+		return result.IsSuccess ? Ok(result.Value) : HandleFailure(result);
+	}
+	
+	[HttpDelete("{dishId}/unlike")]
+	public async Task<IActionResult> RemoveFromFavorites(Guid dishId)
+	{
+		var result = await sender.Send(new RemoveFromFavoritesCommand { DishId = dishId });
+		
+		return result.IsSuccess ? NoContent() : HandleFailure(result);
+	}
+	
 	[HttpDelete("{id}")]
 	public async Task<IActionResult> Delete(Guid id)
 	{
 		var result = await sender.Send(new DeleteDishCommand { Id = id });
 		
-		return result.IsSuccess ? Ok() : HandleFailure(result);
+		return result.IsSuccess ? NoContent() : HandleFailure(result);
 	}
 }

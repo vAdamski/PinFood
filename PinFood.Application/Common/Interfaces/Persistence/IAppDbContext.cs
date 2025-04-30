@@ -12,6 +12,7 @@ public interface IAppDbContext
 	DbSet<Dish> Dishes { get; set; }
 	DbSet<DishImage> DishImages { get; set; }
 	DbSet<RecipeStep> RecipeSteps { get; set; }
+	DbSet<FavoriteDish> FavoriteDishes { get; set; }
 	
 	Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken());
 	void Dispose();

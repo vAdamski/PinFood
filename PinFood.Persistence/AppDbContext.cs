@@ -40,6 +40,7 @@ public class AppDbContext : DbContext, IAppDbContext
 	public DbSet<Dish> Dishes { get; set; }
 	public DbSet<DishImage> DishImages { get; set; }
 	public DbSet<RecipeStep> RecipeSteps { get; set; }
+	public DbSet<FavoriteDish> FavoriteDishes { get; set; }
 	
 	
 	protected override void OnModelCreating(ModelBuilder modelBuilder)

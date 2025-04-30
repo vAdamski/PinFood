@@ -65,4 +65,16 @@ public static class DomainErrors
 		public static Error InvalidFilePath =>
 			new Error("InvalidFilePath", $"File path cannot be empty.");
 	}
+	
+	public static class FavoriteDish
+	{
+		public static Error InvalidEmail =>
+			new Error("InvalidEmail", $"Email cannot be empty.");
+		
+		public static Error DishCannotBeNull =>
+			new Error("DishCannotBeNull", $"Dish cannot be null.");
+		
+		public static Error FavoriteDishNotFound =>
+			new Error("FavoriteDishNotFound", $"Favorite dish not found.");
+	}
 }
